@@ -8,6 +8,7 @@ import lombok.ToString;
 @Getter
 @ToString
 class Student {
+    private Integer id;
     private String name;
     private Short age;
     private Gender gender;

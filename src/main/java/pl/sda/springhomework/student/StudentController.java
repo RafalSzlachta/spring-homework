@@ -1,10 +1,7 @@
 package pl.sda.springhomework.student;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +20,10 @@ class StudentController {
     List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
+
+    @DeleteMapping("/{id}")
+    void removeStudentById(@PathVariable Integer id) {
+        studentService.removeStudentById(id);
+    }
+
 }

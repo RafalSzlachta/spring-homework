@@ -19,4 +19,8 @@ public class StudentService {
                 .findStudentById(id)
                 .orElseThrow(() -> new StudentNotFoundExeption(id.toString()));
     }
+
+    public void removeStudentById(Integer id) {
+        studentRepository.removeStudent(getStudentById(id));
+    }
 }

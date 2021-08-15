@@ -14,11 +14,11 @@ class StudentRepository {
     @PostConstruct
     void addSampleStudents() {
         students = new ArrayList<>();
-        students.add(new Student("Agata", (short) 22, Gender.FEMALE));
-        students.add(new Student("Romek", (short) 23, Gender.MALE));
-        students.add(new Student("Piotrek", (short) 21, Gender.MALE));
-        students.add(new Student("Martyna", (short) 20, Gender.FEMALE));
-        students.add(new Student("Karolina", (short) 25, Gender.FEMALE));
+        students.add(new Student(0, "Agata", (short) 22, Gender.FEMALE));
+        students.add(new Student(1, "Romek", (short) 23, Gender.MALE));
+        students.add(new Student(2, "Piotrek", (short) 21, Gender.MALE));
+        students.add(new Student(3, "Martyna", (short) 20, Gender.FEMALE));
+        students.add(new Student(4, "Karolina", (short) 25, Gender.FEMALE));
     }
 
     List<Student> findAllStudents() {
@@ -31,5 +31,9 @@ class StudentRepository {
         } catch (IndexOutOfBoundsException e) {
             return Optional.empty();
         }
+    }
+
+    void removeStudent(Student student) {
+        students.remove(student);
     }
 }
