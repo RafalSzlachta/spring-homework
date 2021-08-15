@@ -30,4 +30,9 @@ class StudentController {
     boolean createStudent(@RequestBody final Student student) {
         return studentService.addNewStudent(student);
     }
+
+    @PutMapping("/{id}")
+    boolean updateStudent(@PathVariable final Integer id, @RequestBody Student student){
+        return studentService.updateStudentWithId(id, student);
+    }
 }

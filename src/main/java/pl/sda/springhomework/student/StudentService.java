@@ -30,4 +30,10 @@ public class StudentService {
             return true;
         } else return false;
     }
+
+    public boolean updateStudentWithId(Integer id, Student student) {
+        if(studentRepository.findStudentById(id).isPresent()) {
+            return studentRepository.updateStudent(id, student);
+        } else return false;
+    }
 }

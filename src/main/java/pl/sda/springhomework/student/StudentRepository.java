@@ -40,4 +40,12 @@ class StudentRepository {
     void add(Student student) {
         students.add(student);
     }
+
+    public boolean updateStudent(Integer id, Student student) {
+        Student studentToUpdate = students.stream().filter(x -> id.equals(x.getId())).findFirst().get();
+        if (student.getAge()!=null) studentToUpdate.setAge(student.getAge());
+        if (student.getName()!=null) studentToUpdate.setName(student.getName());
+        if (student.getGender()!=null) studentToUpdate.setGender(student.getGender());
+        return true;
+    }
 }
