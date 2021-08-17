@@ -20,7 +20,14 @@ public class StudentService {
                 .orElseThrow(() -> new StudentNotFoundExeption(id.toString()));
     }
 
-    public void removeStudentById(Integer id) {
-        studentRepository.removeStudent(getStudentById(id));
+    public boolean removeStudentById(Integer id) {
+        return studentRepository.removeStudent(getStudentById(id));
+    }
+
+    public boolean addNewStudent(Student student) {
+        if(studentRepository.findStudentById(student.getId()).isEmpty()) {
+            studentRepository.add(student);
+            return true;
+        } else return false;
     }
 }

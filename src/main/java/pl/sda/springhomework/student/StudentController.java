@@ -12,7 +12,7 @@ class StudentController {
     private final StudentService studentService;
 
     @GetMapping("/{id}")
-    Student getStudentById(@PathVariable Integer id) {
+    Student getStudentById(@PathVariable final Integer id) {
         return studentService.getStudentById(id);
     }
 
@@ -22,8 +22,12 @@ class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    void removeStudentById(@PathVariable Integer id) {
-        studentService.removeStudentById(id);
+    boolean removeStudentById(@PathVariable final Integer id) {
+        return studentService.removeStudentById(id);
     }
 
+    @PostMapping
+    boolean createStudent(@RequestBody final Student student) {
+        return studentService.addNewStudent(student);
+    }
 }

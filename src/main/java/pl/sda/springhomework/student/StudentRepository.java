@@ -25,15 +25,19 @@ class StudentRepository {
         return students;
     }
 
-    Optional<Student> findStudentById(Integer index) {
+    Optional<Student> findStudentById(Integer id) {
         try {
-            return Optional.of(students.get(index));
+            return students.stream().filter(x -> id.equals(x.getId())).findFirst();
         } catch (IndexOutOfBoundsException e) {
             return Optional.empty();
         }
     }
 
-    void removeStudent(Student student) {
-        students.remove(student);
+    boolean removeStudent(Student student) {
+        return students.remove(student);
+    }
+
+    void add(Student student) {
+        students.add(student);
     }
 }
